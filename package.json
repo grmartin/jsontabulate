@@ -1,0 +1,31 @@
+{
+  "name": "@grmartin/jsontabulate",
+  "version": "0.5.1",
+  "description": "CLI Tool to translate JSON via jsonpath expressions to tabular data.",
+  "main": "run.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "jsonpath",
+    "cli",
+    "table",
+    "csv"
+  ],
+  "author": "Glenn R. Martin",
+  "license": "BSD-2-Clause",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/grmartin/jsontabulate.git"
+  },
+  "bin": {
+    "jsontabulate": "run.js"
+  },
+  "dependencies": {
+    "command-line-args": "^5.1.1",
+    "command-line-usage": "^6.1.0",
+    "easy-table": "^1.1.1",
+    "jsonpath": "^1.0.2",
+    "lodash.zip": "^4.2.0"
+  }
+}
