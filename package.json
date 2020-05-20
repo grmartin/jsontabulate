@@ -1,6 +1,6 @@
 {
   "name": "@grmartin/jsontabulate",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "CLI Tool to translate JSON via jsonpath expressions to tabular data.",
   "main": "run.js",
   "scripts": {

@@ -75,8 +75,16 @@ const expressions = (options.expression || []).map((expr) => {
     }
 });
 
+const isObject = (x)  => {
+    const type = typeof x;
+    return type === 'function' || type === 'object' && !!x;
+}
+
 expressions.forEach((expression) => {
-    resultLists.push(jsonpath.query(data, expression));
+    resultLists.push(
+        jsonpath.query(data, expression)
+            .map((x) => Array.isArray(x) || isObject(x) ? JSON.stringify(x) : x)
+    );
 });
 
 const output = headers.filter((x) => x !== NO_HEADER).length === 0 ?
@@ -90,12 +98,13 @@ const csvEscape = (string) => {
     const regex = /[" '\n\r\t,]/img;
 
     if (regex.test(string)) {
-        let out = string.replace(/(")/img, '\"');
+        let out = string;
         const repls = [
             [/\\/g, "\\\\"],
             [/\r/g, "\\r"],
             [/\t/g, "\\t"],
-            [/\n/g, "\\n"]
+            [/\n/g, "\\n"],
+            [/"/g, "\\\""],
         ].forEach((set) => {
             out = out.replace(set[0], set[1]);
         });
